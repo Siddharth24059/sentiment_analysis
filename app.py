@@ -100,26 +100,26 @@ if st.session_state['data_ready']:
 # Show this only if model is trained and data is ready
 if st.session_state.get("data_ready"):
     st.markdown("---")
-    st.subheader("🔍 Test Your Own Sentence")
+    st.subheader(" Test Your Own Sentence")
 
     try:
         model = joblib.load(MODEL_NAME)
-        user_input = st.text_area("✏️ Enter a sentence to analyze:")
+        user_input = st.text_area(" Enter a sentence to analyze:")
 
         if st.button("Predict Sentiment"):
             if user_input.strip() == "":
-                st.warning("⚠️ Please enter some text.")
+                st.warning(" Please enter some text.")
             else:
                 result = model.predict([user_input])[0]
 
                 if result == "positive":
-                    st.success("😊 Sentiment: Positive")
+                    st.success(" Sentiment: Positive")
                 elif result == "negative":
-                    st.error("😠 Sentiment: Negative")
+                    st.error(" Sentiment: Negative")
                 elif result == "neutral":
-                    st.info("😐 Sentiment: Neutral")
+                    st.info(" Sentiment: Neutral")
                 else:
-                    st.write(f"🤔 Sentiment: {result}")
+                    st.write(f" Sentiment: {result}")
 
     except Exception as e:
         st.error(f"❌ Could not load the model: {e}")
